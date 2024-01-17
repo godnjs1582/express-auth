@@ -78,7 +78,7 @@ app.get("/refresh", (req, res) => {
         return res.sendStatus(403);
       } else {
         //accessToken 생성
-        const accessToken = jwt.sign({ name: user.name }, secretKey, {
+        const accessToken = jwt.sign({ name: user.name }, process.env.REACT_PUBLIC_ACCESS_KEY, {
           expiresIn: "30s",
         });
         res.json({ accessToken });
